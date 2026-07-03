@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Quick Wins Academy — 10K in 10 Days | Service Loop Electrical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{
+  --camp:#FDC33E;
+  --camp-deep:#b8862a;
+  --ink:#0a0a0b;
+  --panel:#141416;
+  --panel-2:#1a1a1d;
+  --line:rgba(255,255,255,.09);
+  --bone:#f2efe9;
+  --muted:#9a978f;
+  --ember:#FDC33E;
+  --gold-soft:#E3C575;
+  --navy:#1B2A45;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:'Montserrat',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+::selection{background:var(--ember);color:#0a0a0b}
+h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.02em;text-transform:uppercase;line-height:1.05}
+.chalk{font-family:'Permanent Marker',cursive;text-transform:none;letter-spacing:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+.lantern{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(600px 420px at 85% 0%, rgba(232,163,61,.12), transparent 70%),
+    radial-gradient(520px 380px at 8% 100%, rgba(253,195,62,.06), transparent 70%);
+}
+main{position:relative;z-index:1}
+
+/* ---------- top bar ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:16px 0;border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:56px;width:auto}
+.brand small{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brand strong{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.back{
+  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.back:hover,.back:focus-visible{color:var(--bone)}
+
+/* ---------- layout ---------- */
+.shell{display:grid;grid-template-columns:1fr 320px;gap:36px;padding:36px 0 72px;align-items:start}
+@media(max-width:960px){.shell{grid-template-columns:1fr}}
+
+/* ---------- lesson main ---------- */
+.lesson-count{font-size:11px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--camp)}
+.lesson h1{font-size:clamp(1.7rem,4vw,2.6rem);margin:10px 0 22px}
+.lesson-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.arrows{display:flex;gap:8px;flex:none;padding-top:4px}
+.arrow{
+  width:44px;height:38px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);color:var(--bone);cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,transform .15s;
+}
+.arrow svg{display:block}
+.arrow:hover:not(:disabled),.arrow:focus-visible{border-color:var(--ember);transform:translateY(-2px)}
+.arrow:disabled{opacity:.3;cursor:default}
+.player{
+  position:relative;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;
+}
+.player wistia-player{position:absolute;inset:0;width:100%;height:100%}
+.desc{margin-top:26px;max-width:680px}
+.desc p{color:var(--muted);font-size:15px;margin-bottom:14px}
+.desc p strong{color:var(--bone)}
+.desc ul{margin:0 0 14px 20px;color:var(--muted);font-size:15px}
+.desc ul li{margin-bottom:8px}
+.lesson-img{
+  margin-top:10px;max-width:680px;border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;background:var(--panel-2);
+}
+.lesson-img img{width:100%}
+
+/* ---------- lesson nav ---------- */
+.lesson-nav{
+  display:flex;align-items:center;gap:12px;margin-top:32px;flex-wrap:wrap;
+}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:transparent;color:var(--bone);border:1px solid var(--line);cursor:pointer;
+  padding:14px 22px;border-radius:10px;font-family:'Montserrat',sans-serif;
+  transition:border-color .2s,color .2s,transform .15s;text-decoration:none;
+}
+.nav-btn:hover:not(:disabled),.nav-btn:focus-visible{border-color:var(--camp);transform:translateY(-2px)}
+.nav-btn:disabled{opacity:.35;cursor:default}
+.nav-btn.done-btn{border-color:rgba(253,195,62,.4);color:var(--ember)}
+.nav-btn.done-btn.is-done{background:rgba(253,195,62,.12);border-color:var(--ember)}
+.nav-btn.primary{background:var(--ember);border-color:var(--ember);color:#0a0a0b;box-shadow:0 6px 24px rgba(253,195,62,.3)}
+.nav-btn.primary:hover{box-shadow:0 10px 30px rgba(253,195,62,.4)}
+.spacer{flex:1}
+
+/* ---------- sidebar ---------- */
+.rail{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 0 12px;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto;
+}
+.rail-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:0 20px 14px;border-bottom:1px solid var(--line);
+}
+.rail-head h2{font-size:18px}
+.rail-head .prog{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.rail-group{padding:16px 0 4px}
+.rail-group h3{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  padding:0 20px 8px;
+}
+.rail-group h3 span{color:var(--camp)}
+.rail a.item{
+  display:flex;align-items:center;gap:12px;padding:10px 20px;text-decoration:none;
+  font-size:13px;font-weight:600;color:var(--muted);
+  border-left:2px solid transparent;transition:color .15s,background .15s;
+}
+.rail a.item:hover{color:var(--bone);background:rgba(255,255,255,.03)}
+.rail a.item.active{color:var(--bone);border-left-color:var(--ember);background:rgba(253,195,62,.08)}
+.dot{
+  width:16px;height:16px;border-radius:50%;border:2px solid var(--line);flex:none;
+  display:grid;place-items:center;transition:border-color .15s,background .15s;
+}
+.item.active .dot{border-color:var(--camp)}
+.item.watched .dot{border-color:var(--ember);background:rgba(253,195,62,.15)}
+.item.watched .dot::after{content:"✓";font-size:9px;color:var(--ember);font-weight:800}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot .canon{font-family:'Permanent Marker',cursive;color:var(--bone);font-size:14px}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--camp);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="lantern" aria-hidden="true"></div>
+<main>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="brand" href="index.html" id="brand-link">
+        <img src="sle-logo-gold.png" alt="">
+        <div>
+          <strong>Quick Wins Academy</strong>
+          <small>10 Days · $10K · 10 Ways</small>
+        </div>
+      </a>
+      <a class="back" href="index.html" id="back-link">← Back to Camp Hub</a>
+    </div>
+
+    <div class="shell">
+
+      <!-- LESSON -->
+      <section class="lesson" aria-live="polite">
+        <div class="lesson-head">
+          <div>
+            <div class="lesson-count" id="lesson-count">Lesson 1 of 10</div>
+            <h1 id="lesson-title">—</h1>
+          </div>
+          <div class="arrows">
+            <button class="arrow" id="prev-arrow" aria-label="Previous lesson"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 4L3 8l4 4"/></svg></button>
+            <button class="arrow" id="next-arrow" aria-label="Next lesson"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+        <div class="player" id="player"></div>
+        <div class="desc" id="lesson-desc"></div>
+        <div class="lesson-nav">
+          <button class="nav-btn" id="prev-btn">← Previous</button>
+          <button class="nav-btn" id="next-btn">Next →</button>
+          <div class="spacer"></div>
+          <button class="nav-btn done-btn" id="done-btn">Mark complete ✓</button>
+        </div>
+      </section>
+
+      <!-- LESSON RAIL -->
+      <aside class="rail" aria-label="Lessons">
+        <div class="rail-head">
+          <h2>Lessons</h2>
+          <div class="prog" id="rail-prog">0 / 10</div>
+        </div>
+        <div id="rail-groups"></div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 Service Loop Electrical Inc. · For Electricians. By Electricians.</div>
+      <div class="canon">Service to others is the highest form of distinction.</div>
+    </div>
+  </footer>
+</main>
+
+<script>
+/* ============================================================
+   QUICK WINS ACADEMY — edit lesson titles/descriptions here.
+   Each desc entry is one paragraph.
+   ============================================================ */
+const GROUPS = [
+  { heading:"Start Here", slug:"intro", lessons:[
+    { id:"1726049my5", label:"Intro", title:"Welcome to 10K in 10 Days — Quick Wins Academy", desc:[
+      "Welcome.",
+      "You're here because you're done leaving money on the table.",
+      "<strong>10K in 10 Days</strong> is exactly what it says — the fastest path to your first (or next) $10K month, built from the same system our partners use to 10x their tickets and fill their calendars.",
+      "Two tracks, ten lessons, two bonuses:",
+      "<strong>10K Tickets Now</strong> — turn the calls you already have into real revenue. Pricing. Options. Deposits. Financing. The process. The why.",
+      "<strong>10K Leads Now</strong> — turn your current clients, alliances, and neighborhood into a lead machine. Referrals. Strategic alliances. Local heroics. Social. 24/7 visibility. Paid boost.",
+      "No fluff. No theory. Each lesson is one move, one win, one reason to keep going.",
+      "Let's go."
+    ]}
+  ]},
+  { heading:"Tickets Now", slug:"tickets", lessons:[
+    { id:"xmy4gkrrpy", label:"01", title:"10% Price + 100% Value = $ > $$$", img:"qwa-01-notes.png", desc:[
+      "A 10% price increase is a <strong>100% increase in profit</strong>.",
+      "That's the math most electricians miss every single day they stay where they are.",
+      "But the raise alone isn't the play. The play is: <strong>raise the price AND raise the value 10x more</strong>.",
+      "When the value on the table is 10x what you're charging, price stops being the conversation. The customer sees the win. You stop defending.",
+      "<strong>What that looks like:</strong>",
+      "<ul><li>Stop pricing based on what you think the customer will \"accept.\" Price from your math.</li><li>For every dollar you add to price, add ten to what you deliver — in care, in clarity, in completeness.</li><li>The value stack isn't just the work. It's the experience, the guarantee, the options, the presentation.</li></ul>",
+      "<strong>This week:</strong>",
+      "<ul><li>Raise your prices 10% starting on your next call.</li><li>Lifetime Craftsmanship Guarantee.</li><li>Present. Watch what happens.</li></ul>",
+      "10% this week. Everyone else stays stuck at their old rate."
+    ]},
+    { id:"glgwkjlbie", label:"02", title:"Offer More + More Often = $ > $$$", img:"qwa-02-notes.png", desc:[
+      "If you're showing one price, you're not selling. <strong>You're taking an order.</strong>",
+      "<strong>Three options. Every call. No exceptions.</strong>",
+      "Introduce them using the Whats framework so the customer sees the full picture — not just what they called about, but everything connected to it.",
+      "Your top option should be <strong>3x the price</strong> of what they called for. That's not upsell. That's the complete solution they didn't know to ask about.",
+      "<strong>Why three options work:</strong>",
+      "<ul><li>One price makes you a quote. Three options makes you an advisor.</li><li>Customers always pick from what's in front of them. Give them your best work.</li><li>The highest option anchors the middle. The middle gets chosen more than you think.</li></ul>",
+      "<strong>This week:</strong>",
+      "<ul><li>Every call gets three options.</li><li>Your top option is 3x the callout.</li><li>You introduce them with the 3 Whats framework, not a price list.</li></ul>",
+      "When you give people a choice, they pick. When you give them one price, they shop."
+    ]},
+    { id:"7mbqtpsol9", label:"03", title:"Faster Collection + More Yes's = $$ > $$$", img:"qwa-03-notes.png", desc:[
+      "<strong>Speed closes deals. Friction kills them.</strong>",
+      "Two moves in this lesson — that's it.",
+      "<ul><li><strong>Deposits.</strong> 50% collected before a tool leaves the van. Cash flow stops being a problem the day you start.</li><li><strong>Financing.</strong> Set up Wisetack. Easy integration with any CRM. Removes \"I can't afford it\" from the conversation before it even starts.</li></ul>",
+      "That's it. Two plumbing changes. One transforms your weekly deposits. The other transforms your close rate on the bigger tickets.",
+      "<strong>This week:</strong>",
+      "<ul><li>50% deposit on every job you sell.</li><li>Wisetack set up and offered on every option above your silver tier.</li></ul>",
+      "When money moves fast, deals move fast."
+    ]},
+    { id:"m6sei5pr6s", label:"04", title:"Notepad + Flow = $$ > $$$", img:"qwa-04-notes.png", desc:[
+      "<strong>You already have the information to close every call.</strong>",
+      "You're just not capturing it — and you're not running the flow that turns it into yes.",
+      "<strong>The Notepad</strong>",
+      "Take notes. Real ones. On a real notepad (or tablet, but something dedicated). Every call, every word that matters, goes down.",
+      "Why? Because:",
+      "<ul><li>What they tell you at the door is what closes them at the kitchen table</li><li>You can't use words you didn't hear</li><li>Notes signal care — the customer sees you listening</li></ul>",
+      "<strong>The Flow — EUOS</strong>",
+      "Run the EUOS framework on every call:",
+      "<ul><li><strong>E — Equity</strong> — build trust, earn the right to recommend</li><li><strong>U — Understand</strong> — dig into what they actually need (notepad working hard here)</li><li><strong>O — Offer</strong> — present three options</li><li><strong>S — Survey</strong> — find what else matters to them</li></ul>",
+      "Each step has micro-moves beneath it.",
+      "<strong>The discipline</strong>",
+      "Get better by doing the repetitive thing, not the easy thing.",
+      "Skipping Equity because you're \"busy\" costs you more than the hour it would've taken. Shortcuts feel productive. They're not.",
+      "Don't shortcut the reps. <strong>The reps ARE the skill.</strong>"
+    ]},
+    { id:"oog4fedzn6", label:"05", title:"Their Words >> Your Solution = $ > $$$", img:"qwa-05-notes.png", desc:[
+      "<strong>Every decision humans make is emotional. Every one.</strong>",
+      "People don't buy because they need it. They buy because of how it makes them feel — about their home, their safety, their family, themselves.",
+      "Your job: <strong>find the WHY behind what they're asking for.</strong>",
+      "<strong>The 4 Forces</strong> — the emotions that drive every decision:",
+      "<ul><li><strong>Pains</strong> (Present, Away From): \"This outlet keeps tripping\"</li><li><strong>Wants</strong> (Present, Towards): \"I want a cleaner panel\"</li><li><strong>Fears</strong> (Future, Away From): \"I'm worried about a fire\"</li><li><strong>Wishes</strong> (Future, Towards): \"I want this house to last us 30 years\"</li></ul>",
+      "80% of people react away from (pains + fears — scarcity).",
+      "The top 20% move toward (wants + wishes — abundance).",
+      "Identify which force the customer is feeling.",
+      "Mirror their language. Speak to <strong>THEIR</strong> words — not your technical ones.",
+      "That's the magic. That's the why behind the yes."
+    ]},
+    { id:"kontaw4b9a", label:"Bonus", title:"Full Tilt Raise", img:"qwa-bonus1-notes.png", desc:[
+      "<strong>10% price increase was the warm-up.</strong>",
+      "Now you go full tilt.",
+      "You've presented at the new 10% rate.",
+      "You've offered options.",
+      "You've collected deposits.",
+      "You've learned the EUOS process.",
+      "The wins are landing.",
+      "<strong>Time to make a real move.</strong>",
+      "Price yourself significantly above the marketplace. Not 10% more — <strong>30%, 50%, even double</strong>.",
+      "Why? Because the value you're delivering now is different.",
+      "The experience, the options, the confidence, the presentation. It's not the same product anymore.",
+      "The electricians who win big don't compete on price.",
+      "<strong>They set the price everyone else compares themselves to.</strong>",
+      "Raise until it scares you a little. Then watch the right customers show up."
+    ]}
+  ]},
+  { heading:"Leads Now", slug:"leads", lessons:[
+    { id:"4ke6qhwl2e", label:"06", title:"WOM Machine (Clients + 3R = $$$)", img:"qwa-06-notes.png", desc:[
+      "<strong>Your best leads are already on your calendar.</strong>",
+      "WOM = Word Of Mouth",
+      "Serve your current clients so well they become your marketing team.",
+      "<strong>The 3 R's:</strong>",
+      "<ul><li><strong>Refer</strong> — they tell friends and family</li><li><strong>Repeat</strong> — they come back for every project</li><li><strong>Review</strong> — they leave 5-star social proof that pulls in the next customer</li></ul>",
+      "What would happen if every client triggered all three?",
+      "That's not a reach. That's what the SLE system is designed to produce. Every call, every customer, every time.",
+      "<strong>Serve first. Ask second.</strong> The referrals, repeats, and reviews come when the experience is undeniable."
+    ]},
+    { id:"bwgg5rcf3z", label:"07", title:"WOM Machine (SA × 3 = $$$)", img:"qwa-07-notes.png", desc:[
+      "<strong>Strategic Alliances — SA × 3</strong> — turn other people's businesses into your lead source.",
+      "<strong>The Big SA:</strong>",
+      "The big contractors who throw service work away. They don't want small jobs, homeowner calls, or emergency work. You do. Get on their short list.",
+      "<strong>The Little SA:</strong>",
+      "The little guys behind you in the process. They need help. They don't have enough hands. They might shift work your way when they're stretched.",
+      "<strong>The Gang:</strong>",
+      "The other contractors you use to complete your options (plumbers, HVAC, roofers). They mention you; you mention them. Coalitions form fast when you're already showing up in the same Facebook groups.",
+      "<strong>Move today:</strong>",
+      "<ul><li>List 5 Big SA candidates. Reach out this week.</li><li>List 5 Little SA candidates. Offer a win-win.</li><li>Pick 3 contractors you already work with. Send them a referral first. They'll return it.</li></ul>",
+      "<strong>Alliance first. Revenue follows.</strong>"
+    ]},
+    { id:"zxxbfjizun", label:"08", title:"WOM Machine (COI + Hyper Local Hero = $$$)", img:"qwa-08-notes.png", desc:[
+      "<strong>START WITH YOUR INNER CIRCLE</strong>",
+      "Your staff, your spouse, your buddies. The people closest to you. Most electricians never tell them what they actually offer or what one referral is worth.",
+      "Fix that.",
+      "<ul><li>Sit your team down (and your family) and walk them through your offers, guarantees, and tier pricing.</li></ul>",
+      "When your team and your circle KNOW your offers and KNOW what's in it for them to mention you, they'll do it without thinking. Without that, they forget you exist by Tuesday.",
+      "<strong>PHONE BOOK BLITZ</strong>",
+      "Family, Friends, Associates, and supporting businesses — that's WHO is in your Phone Book right now. Do they know you're the best? Do they know why?",
+      "…Your commitment to put service ahead of skills… Peace of mind ahead of profits… Promise and commitment ahead of risk (to you)",
+      "If they knew your why, would they help you with how?",
+      "<strong>THEN WIDEN THE CIRCLE — NETWORKING</strong>",
+      "Get into a networking group. I recommend Toastmasters — here's why:",
+      "<ul><li>You'll get better at speaking to your value (which changes your close rate everywhere else).</li><li>You'll speak so often that people in that room will know you — and refer you for the things they keep hearing you say.</li></ul>",
+      "<strong>HYPER LOCAL HERO</strong>",
+      "Own your neighborhood. Get 5-mile famous.",
+      "Knock on local doors:",
+      "\"Hey, I live in the area. I'm making it my personal responsibility to bring every member of this neighborhood up to the safety and service standard we hold in our trade.\"",
+      "That's not a pitch. That's a purpose. People remember purpose.",
+      "<strong>Be the electrician people tell their neighbors about.</strong>"
+    ]}
+  ]}
+];
+
+const LESSONS = GROUPS.flatMap(g => g.lessons.map(l => ({...l, group:g.heading})));
+const TOTAL = LESSONS.length;
+const STORE_KEY = 'sle-qwa-progress';
+
+/* ---------- camp home (remember which camp hub they came from) ---------- */
+const CAMP_HOME = (function(){
+  let h = null;
+  try{ h = localStorage.getItem('sle-camp-home'); }catch(e){}
+  return h || 'Camp Alpha Hub.html';
+})();
+document.getElementById('brand-link').href = CAMP_HOME;
+document.getElementById('back-link').href = CAMP_HOME;
+
+/* ---------- progress ---------- */
+function getDone(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }catch(e){ return []; } }
+function setDone(arr){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(arr)); }catch(e){} }
+
+/* ---------- wistia ---------- */
+const pl = document.createElement('script');
+pl.src = 'https://fast.wistia.com/player.js'; pl.async = true;
+document.head.appendChild(pl);
+const loadedEmbeds = new Set();
+function ensureEmbed(id){
+  if (loadedEmbeds.has(id)) return;
+  loadedEmbeds.add(id);
+  const s = document.createElement('script');
+  s.src = `https://fast.wistia.com/embed/${id}.js`; s.async = true; s.type = 'module';
+  document.head.appendChild(s);
+  const st = document.createElement('style');
+  st.textContent = `wistia-player[media-id='${id}']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/${id}/swatch');display:block;filter:blur(5px)}`;
+  document.head.appendChild(st);
+}
+
+/* ---------- rail ---------- */
+const railRoot = document.getElementById('rail-groups');
+GROUPS.forEach(g=>{
+  const div = document.createElement('div');
+  div.className = 'rail-group';
+  div.innerHTML = `<h3><span>⁄⁄</span> ${g.heading}</h3>`;
+  g.lessons.forEach(l=>{
+    const idx = LESSONS.findIndex(x=>x.id===l.id);
+    const a = document.createElement('a');
+    a.className = 'item'; a.href = '#'+l.id; a.dataset.idx = idx;
+    a.innerHTML = `<span class="dot" aria-hidden="true"></span><span>${l.label === 'Intro' || l.label === 'Bonus' ? l.label : 'QWA-'+l.label}: ${l.title}</span>`;
+    a.addEventListener('click', e=>{ e.preventDefault(); select(idx); });
+    div.appendChild(a);
+  });
+  railRoot.appendChild(div);
+});
+
+/* ---------- render ---------- */
+let current = 0;
+const el = {
+  count: document.getElementById('lesson-count'),
+  title: document.getElementById('lesson-title'),
+  player: document.getElementById('player'),
+  desc: document.getElementById('lesson-desc'),
+  prev: document.getElementById('prev-btn'),
+  next: document.getElementById('next-btn'),
+  prevA: document.getElementById('prev-arrow'),
+  nextA: document.getElementById('next-arrow'),
+  done: document.getElementById('done-btn'),
+  prog: document.getElementById('rail-prog')
+};
+
+function refreshRail(){
+  const done = getDone();
+  document.querySelectorAll('.rail a.item').forEach(a=>{
+    const i = +a.dataset.idx;
+    a.classList.toggle('active', i===current);
+    a.classList.toggle('watched', done.includes(LESSONS[i].id));
+  });
+  el.prog.textContent = `${done.filter(id=>LESSONS.some(l=>l.id===id)).length} / ${TOTAL}`;
+}
+
+function select(i, push=true){
+  current = Math.max(0, Math.min(TOTAL-1, i));
+  const l = LESSONS[current];
+  el.count.textContent = `Lesson ${current+1} of ${TOTAL} · ${l.group}`;
+  el.title.textContent = l.title;
+  ensureEmbed(l.id);
+  el.player.innerHTML = `<wistia-player media-id="${l.id}" aspect="1.7777777777777777"></wistia-player>`;
+  // auto-complete when the video finishes
+  const wp = el.player.firstElementChild;
+  wp.addEventListener('ended', ()=>{
+    const done = getDone();
+    if (!done.includes(l.id)){
+      setDone([...done, l.id]);
+      if (LESSONS[current] && LESSONS[current].id === l.id){
+        el.done.textContent = 'Completed ✓';
+        el.done.classList.add('is-done');
+      }
+      refreshRail();
+    }
+  });
+  el.desc.innerHTML = l.desc.map(p=>p.trim().startsWith('<ul')?p:`<p>${p}</p>`).join('')
+    + (l.img ? `<div class="lesson-img"><img src="${l.img}" alt="Lesson notes — ${l.title}"></div>` : '');
+  el.prev.disabled = current===0;
+  el.prevA.disabled = current===0;
+  el.nextA.disabled = current===TOTAL-1;
+  el.next.textContent = current===TOTAL-1 ? 'Back to Camp Hub →' : 'Next →';
+  const done = getDone().includes(l.id);
+  el.done.textContent = done ? 'Completed ✓' : 'Mark complete ✓';
+  el.done.classList.toggle('is-done', done);
+  if (push) history.replaceState(null,'','#'+l.id);
+  refreshRail();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+el.prev.addEventListener('click', ()=>select(current-1));
+el.prevA.addEventListener('click', ()=>select(current-1));
+el.nextA.addEventListener('click', ()=>select(current+1));
+el.next.addEventListener('click', ()=>{
+  if (current===TOTAL-1){ location.href = CAMP_HOME; return; }
+  select(current+1);
+});
+el.done.addEventListener('click', ()=>{
+  const id = LESSONS[current].id;
+  let done = getDone();
+  if (done.includes(id)) done = done.filter(x=>x!==id);
+  else done = [...done, id];
+  setDone(done);
+  select(current, false);
+});
+
+/* deep link via hash */
+(function(){
+  const hash = location.hash.replace('#','');
+  const idx = LESSONS.findIndex(l=>l.id===hash);
+  select(idx >= 0 ? idx : 0, false);
+})();
+</script>
+</body>
+</html>
