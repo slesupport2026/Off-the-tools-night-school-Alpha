@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Camp Alpha — Off the Tools Night School | Service Loop Electrical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CAMP THEME — to duplicate for BRAVO, change these two vars
+   (and the <title> + hero camp name). That's it.
+   Alpha  = red   #D62828
+   Bravo  = blue  #2657D9
+   ============================================================ */
+:root{
+  --camp:#D62828;
+  --camp-deep:#8f1717;
+
+  --ink:#0a0a0b;
+  --panel:#141416;
+  --panel-2:#1a1a1d;
+  --line:rgba(255,255,255,.09);
+  --bone:#f2efe9;
+  --muted:#9a978f;
+  --ember:#FDC33E;      /* SLE CTA gold */
+  --gold-soft:#E3C575;  /* SLE heading gold */
+  --navy:#1B2A45;       /* SLE navy card */
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:'Montserrat',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+::selection{background:var(--camp);color:#fff}
+
+h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.02em;text-transform:uppercase;line-height:1.05}
+.chalk{font-family:'Permanent Marker',cursive;text-transform:none;letter-spacing:0}
+
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- lantern atmosphere ---------- */
+.lantern{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(600px 420px at 85% 0%, rgba(232,163,61,.10), transparent 70%),
+    radial-gradient(520px 380px at 8% 100%, rgba(214,40,40,.07), transparent 70%);
+}
+main{position:relative;z-index:1}
+
+/* ---------- top bar ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:48px;width:auto}
+.brand small{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brand strong{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.topnav{display:flex;gap:22px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topnav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.topnav a:hover,.topnav a:focus-visible{color:var(--bone)}
+@media(max-width:640px){.topnav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 56px;position:relative;text-align:center}
+.hero .roundel{height:128px;width:auto;margin:0 auto 26px;filter:drop-shadow(0 8px 30px rgba(214,40,40,.25))}
+@media(max-width:640px){.hero .roundel{height:96px}}
+.camp-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+}
+.camp-eyebrow::before,.camp-eyebrow::after{content:"";width:44px;height:2px;background:var(--camp)}
+.hero h1{
+  font-size:clamp(3.4rem,10vw,7.5rem);
+  margin:14px 0 10px;position:relative;display:inline-block;
+}
+.hero h1 .brush{
+  position:relative;z-index:1;
+}
+.hero h1 .brush::after{ /* the paint slash behind the camp letter */
+  content:"";position:absolute;z-index:-1;left:-4%;right:-6%;top:12%;bottom:8%;
+  background:var(--camp);
+  transform:rotate(-2.5deg) skewX(-8deg);
+  border-radius:6px;
+  box-shadow:0 0 60px rgba(214,40,40,.35);
+}
+.hero .sub{
+  font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  font-size:clamp(1.15rem,3.4vw,1.9rem);color:var(--bone);
+}
+.hero .sub em{font-style:normal;color:var(--ember)}
+.hero .sub sup{font-size:.38em;vertical-align:super;color:var(--muted);letter-spacing:0}
+.hero .chalkline{
+  margin-top:26px;font-size:clamp(1.3rem,3.4vw,2rem);color:var(--bone);
+}
+.hero .chalkline span{color:var(--camp)}
+.hero p.lede{max-width:560px;color:var(--muted);margin:18px auto 0;font-size:15px}
+.hero p.lede strong{color:var(--bone)}
+
+/* countdown */
+.count{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;justify-content:center}
+.count .cell{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  min-width:82px;padding:12px 10px;text-align:center;
+}
+.count .num{font-family:'Anton',sans-serif;font-size:30px;color:var(--bone)}
+.count .lab{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.kickoff-note{margin-top:12px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.kickoff-note b{color:var(--ember);font-weight:700}
+
+/* ---------- the three switches (signature) ---------- */
+.switches{padding:56px 0}
+.sec-head{margin-bottom:8px}
+.sec-head .eyebrow{font-size:10px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--camp)}
+.sec-head h2{font-size:clamp(1.9rem,5vw,3rem);margin-top:8px}
+.sec-head p{color:var(--muted);max-width:620px;margin-top:10px;font-size:15px}
+
+.switch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+@media(max-width:860px){.switch-grid{grid-template-columns:1fr}}
+.switch{
+  position:relative;display:flex;flex-direction:column;gap:14px;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 22px 22px;text-decoration:none;
+  transition:border-color .2s, transform .2s;
+}
+.switch:hover,.switch:focus-visible{border-color:var(--camp);transform:translateY(-3px)}
+.switch .toggle{
+  width:26px;height:44px;border:2px solid var(--line);border-radius:7px;position:relative;flex:none;
+  transition:border-color .2s;
+}
+.switch .toggle::after{
+  content:"";position:absolute;left:3px;right:3px;top:3px;height:16px;border-radius:4px;
+  background:var(--muted);transition:top .2s, background .2s;
+}
+.switch:hover .toggle,.switch:focus-visible .toggle{border-color:var(--camp)}
+.switch:hover .toggle::after,.switch:focus-visible .toggle::after{top:19px;background:var(--camp)}
+.switch .kicker{font-size:10px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.switch h3{font-size:22px;letter-spacing:.03em}
+.switch p{font-size:13.5px;color:var(--muted);flex:1}
+.switch .go{
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--camp);
+}
+.switch.pending{cursor:default}
+.switch.pending:hover{transform:none;border-color:var(--line)}
+.switch.pending:hover .toggle{border-color:var(--line)}
+.switch.pending:hover .toggle::after{top:3px;background:var(--muted)}
+.badge-soon{
+  position:absolute;top:16px;right:16px;font-size:9px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ember);border:1px solid rgba(232,163,61,.4);
+  padding:4px 8px;border-radius:99px;
+}
+
+/* ---------- quick wins academy ---------- */
+.academy{padding:64px 0;border-top:1px solid var(--line)}
+.day-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:36px}
+@media(max-width:860px){.day-grid{grid-template-columns:1fr}}
+.day{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  transition:border-color .2s;
+}
+.day:hover{border-color:rgba(214,40,40,.5)}
+.day .media{position:relative;aspect-ratio:16/9;background:var(--panel-2)}
+.day .media .wistia_responsive_padding{padding:56.25% 0 0 0;position:relative}
+.day .media .wistia_responsive_wrapper{height:100%;left:0;position:absolute;top:0;width:100%}
+.day .placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  color:var(--muted);
+}
+.day .placeholder .play{
+  width:54px;height:54px;border-radius:50%;border:2px solid var(--camp);
+  display:grid;place-items:center;
+}
+.day .placeholder .play::after{
+  content:"";display:block;margin-left:4px;
+  border-left:14px solid var(--camp);border-top:9px solid transparent;border-bottom:9px solid transparent;
+}
+.day .placeholder small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.day .meta{padding:16px 18px 18px;display:flex;gap:14px;align-items:baseline}
+.day .n{
+  font-family:'Anton',sans-serif;font-size:26px;color:var(--camp);flex:none;min-width:64px;
+}
+.day .meta h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14.5px;text-transform:none;letter-spacing:0;line-height:1.4}
+.day .meta p{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* ---------- facebook band ---------- */
+.fb-band{
+  margin:64px 0;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(120deg, rgba(214,40,40,.12), rgba(232,163,61,.05) 60%, transparent),var(--panel);
+  padding:42px 34px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;
+}
+.fb-band .txt{flex:1;min-width:260px}
+.fb-band h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.fb-band p{color:var(--muted);margin-top:10px;font-size:14.5px;max-width:520px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--camp);color:#fff;text-decoration:none;border:0;cursor:pointer;
+  padding:18px 30px;border-radius:10px;transition:transform .15s, box-shadow .2s;
+  box-shadow:0 6px 24px rgba(214,40,40,.35);
+}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 10px 30px rgba(214,40,40,.45)}
+.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--bone)}
+.btn.ghost:hover,.btn.ghost:focus-visible{border-color:var(--camp);color:#fff}
+
+/* ---------- service dna / login ---------- */
+.dna{padding:0 0 64px}
+.dna-card{
+  border:1px dashed rgba(253,195,62,.45);border-radius:var(--radius);
+  background:linear-gradient(140deg, rgba(27,42,69,.55), rgba(27,42,69,.15) 60%),var(--panel);
+  padding:42px 34px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;
+}
+.dna-card .txt{flex:1;min-width:260px}
+.dna-card h2{font-size:clamp(1.5rem,3.6vw,2.1rem)}
+.dna-card h2 span{color:var(--ember)}
+.dna-card p{color:var(--muted);margin-top:10px;font-size:14.5px;max-width:560px}
+.dna-form{display:flex;flex-direction:column;gap:10px;min-width:250px}
+.dna-form input{
+  background:var(--ink);border:1px solid var(--line);border-radius:10px;color:var(--bone);
+  font-family:'Montserrat',sans-serif;font-size:13px;padding:14px 16px;width:100%;
+}
+.dna-form input::placeholder{color:#5c5a54}
+.dna-form input:focus{outline:2px solid var(--ember);outline-offset:1px}
+.dna-form .note{font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-align:center}
+
+/* ---------- six weeks strip ---------- */
+.weeks{padding:0 0 72px}
+.week-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:30px}
+@media(max-width:960px){.week-strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.week-strip{grid-template-columns:repeat(2,1fr)}}
+.wk{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 14px;
+}
+.wk .wn{font-family:'Permanent Marker',cursive;color:var(--camp);font-size:15px}
+.wk h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-top:6px;line-height:1.35}
+.wk p{font-size:11px;color:var(--muted);margin-top:4px}
+.wk.bonus{border-color:rgba(253,195,62,.4);background:linear-gradient(160deg, rgba(27,42,69,.5), transparent 70%),var(--panel)}
+.wk.bonus .wn{color:var(--ember)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:34px 0 44px;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot .canon{font-family:'Permanent Marker',cursive;color:var(--bone);font-size:14px}
+
+/* focus visibility floor */
+a:focus-visible,button:focus-visible{outline:2px solid var(--camp);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="lantern" aria-hidden="true"></div>
+<main>
+  <div class="wrap">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <a class="brand" href="#top" aria-label="Service Loop Electrical — Camp Alpha">
+        <img src="sle-logo-red.png" alt="">
+        <div>
+          <strong>Service Loop Electrical</strong>
+          <small>For Electricians. By Electricians.</small>
+        </div>
+      </a>
+      <nav class="topnav" aria-label="Page sections">
+        <a href="#academy">Quick Wins</a>
+        <a href="#community">Community</a>
+        <a href="#dna">Service DNA</a>
+        <a href="#weeks">Your 6 Weeks</a>
+      </nav>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <img class="roundel" src="sle-logo-red.png" alt="Service Loop Electrical — For Electricians, By Electricians">
+      <div><span class="camp-eyebrow">Camp</span></div>
+      <h1><span class="brush">Alpha</span></h1>
+      <div class="sub">Off the <em>Tools</em><sup>™</sup> Night School</div>
+      <div class="chalkline chalk">Learn tonight. <span>Change everything.</span></div>
+      <p class="lede">You're in, sparkie. This is your camp hub — everything you need between now and kickoff lives on this page. <strong>Three switches to flip below.</strong> Flip them tonight.</p>
+
+      <div class="count" id="countdown" aria-label="Countdown to kickoff">
+        <div class="cell"><div class="num" id="cd-d">--</div><div class="lab">Days</div></div>
+        <div class="cell"><div class="num" id="cd-h">--</div><div class="lab">Hours</div></div>
+        <div class="cell"><div class="num" id="cd-m">--</div><div class="lab">Minutes</div></div>
+        <div class="cell"><div class="num" id="cd-s">--</div><div class="lab">Seconds</div></div>
+      </div>
+      <div class="kickoff-note">Kickoff · <b>Tuesday, July 21 · 4:00 PM PT</b> · live in the group</div>
+    </section>
+
+    <!-- THREE SWITCHES -->
+    <section class="switches" id="switches">
+      <div class="sec-head">
+        <div class="eyebrow">Before Kickoff</div>
+        <h2>Flip These Three Switches</h2>
+        <p>Every panel gets energized in order. Same here. Do these three things now and you walk into Week 1 already moving.</p>
+      </div>
+      <div class="switch-grid">
+        <a class="switch" href="#academy">
+          <div class="toggle" aria-hidden="true"></div>
+          <div class="kicker">Switch 01</div>
+          <h3>Start Quick Wins</h3>
+          <p>The Quick Wins Academy — 10 days, $10K, 10 ways. Ten short lessons you can install on the jobs already on your calendar, before Week 1 even fires.</p>
+          <span class="go">Watch Day 1 ↓</span>
+        </a>
+        <a class="switch" href="#" id="fb-switch" target="_blank" rel="noopener">
+          <div class="toggle" aria-hidden="true"></div>
+          <div class="kicker">Switch 02</div>
+          <h3>Join the Group</h3>
+          <p>Your Camp Alpha Facebook group. Session reminders, pre-call posts, guides, questions — and partners from past cohorts posting real wins every week.</p>
+          <span class="go">Request to join →</span>
+        </a>
+        <div class="switch pending" id="dna-switch" role="group" aria-label="Service DNA login — coming soon">
+          <span class="badge-soon">Powering up</span>
+          <div class="toggle" aria-hidden="true"></div>
+          <div class="kicker">Switch 03</div>
+          <h3>Claim Your Service DNA</h3>
+          <p>Your login to the Service DNA platform — your numbers, your trackers, your game plan, saved and waiting every session. Drop your email and we'll flip this switch for you the moment it's live.</p>
+          <span class="go">Get notified ↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK WINS ACADEMY -->
+    <section class="academy" id="academy">
+      <div class="sec-head">
+        <div class="eyebrow">Quick Wins Academy</div>
+        <h2>10 Days. $10K. 10 Ways.</h2>
+        <p>Ten moves the service giants already pressure-tested — one a day, each built to produce a win on a real call this week. Don't binge them. Install them. Watch one, run it, report the win in the group.</p>
+      </div>
+      <div class="day-grid" id="day-grid"><!-- populated by script --></div>
+    </section>
+
+    <!-- FACEBOOK BAND -->
+    <section id="community">
+      <div class="fb-band">
+        <div class="txt">
+          <div class="sec-head" style="margin:0">
+            <div class="eyebrow">The Room</div>
+            <h2>Nobody Climbs Alone</h2>
+            <p>Every reminder, every pre-call post, every guide, and every win lands in the Camp Alpha group first. Partners from earlier camps are in there too — the ones already off the tools. Introduce yourself and tell the room your Point B.</p>
+          </div>
+        </div>
+        <a class="btn" href="#" id="fb-btn" target="_blank" rel="noopener">Join Camp Alpha on Facebook</a>
+      </div>
+    </section>
+
+    <!-- SERVICE DNA LOGIN PLACEHOLDER -->
+    <section class="dna" id="dna">
+      <div class="dna-card">
+        <div class="txt">
+          <div class="sec-head" style="margin:0">
+            <div class="eyebrow">Coming Online</div>
+            <h2>Service <span>DNA</span> Login</h2>
+            <p>Nature and nurture. Service DNA gives you the instincts — Night School turns them into habits. Your personal login is being wired up now: saved numbers, trackers, and your game plan, ready every session. Leave your email and you'll be first through the door.</p>
+          </div>
+        </div>
+        <form class="dna-form" id="dna-form" novalidate>
+          <label for="dna-email" class="sr-only" style="position:absolute;left:-9999px">Email address</label>
+          <input type="email" id="dna-email" name="email" placeholder="you@yourcompany.com" autocomplete="email" required>
+          <button class="btn ghost" type="submit" id="dna-submit">Notify me at launch</button>
+          <div class="note" id="dna-note">We'll only use this to send your login.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SIX WEEKS STRIP -->
+    <section class="weeks" id="weeks">
+      <div class="sec-head">
+        <div class="eyebrow">The Road Ahead</div>
+        <h2>Your Six Weeks at Camp</h2>
+        <p>Four systems installed, then two bonus weeks stacked on top. Tuesdays &amp; Thursdays, 4:00–5:30 PM PT.</p>
+      </div>
+      <div class="week-strip">
+        <div class="wk"><div class="wn">Wk 1</div><h4>Profit First</h4><p>Your Simple Service Rate, built to your numbers.</p></div>
+        <div class="wk"><div class="wn">Wk 2</div><h4>BrandStand™</h4><p>Leads flowing without a dollar of ad spend.</p></div>
+        <div class="wk"><div class="wn">Wk 3</div><h4>The Service Loop</h4><p>Six options on every call. They pick. You profit.</p></div>
+        <div class="wk"><div class="wn">Wk 4</div><h4>The Close Loop</h4><p>Serve first. Sold tickets follow.</p></div>
+        <div class="wk bonus"><div class="wn">Bonus</div><h4>Field Trips</h4><p>Guest teach downs from partners at $1M+.</p></div>
+        <div class="wk bonus"><div class="wn">Bonus</div><h4>Game Plan</h4><p>Your next 12 months, mapped. Plus your private 1:1.</p></div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 Service Loop Electrical Inc. · For Electricians. By Electricians.</div>
+      <a id="podcast-link" href="#" target="_blank" rel="noopener" style="display:none;color:var(--ember);text-decoration:none;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px">▶ The Million Dollar Electrician Podcast</a>
+      <div class="canon">Service to others is the highest form of distinction.</div>
+    </div>
+  </footer>
+</main>
+
+<script>
+/* ============================================================
+   CAMP ALPHA CONFIG — edit everything here, touch nothing else
+   ============================================================ */
+const CONFIG = {
+  kickoffISO: "2026-07-21T16:00:00-07:00",          // Tue Jul 21, 4:00 PM PT
+  facebookGroupURL: "FB_GROUP_URL_HERE",             // Camp Alpha FB group invite link
+  // Quick Wins Academy — paste each Wistia media ID (the hash in the Wistia URL).
+  // Leave as-is to show a styled "loading soon" placeholder for that day.
+  quickWins: [
+    { id:"WISTIA_ID_01", title:"Day 1 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_02", title:"Day 2 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_03", title:"Day 3 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_04", title:"Day 4 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_05", title:"Day 5 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_06", title:"Day 6 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_07", title:"Day 7 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_08", title:"Day 8 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_09", title:"Day 9 — Title goes here",  blurb:"One-line payoff for the day." },
+    { id:"WISTIA_ID_10", title:"Day 10 — Title goes here", blurb:"One-line payoff for the day." }
+  ],
+  // GHL webhook (or similar) for the Service DNA notify form. Leave "" to store nothing
+  // and just show the thank-you state while the backend is being wired.
+  dnaNotifyWebhook: "",
+  // Million Dollar Electrician podcast (YouTube channel URL). Leave "" to hide the footer link.
+  podcastURL: ""
+};
+
+/* ---------- podcast footer link ---------- */
+(function(){
+  if (CONFIG.podcastURL){
+    const a = document.getElementById('podcast-link');
+    a.href = CONFIG.podcastURL;
+    a.style.display = 'inline';
+  }
+})();
+
+/* ---------- countdown ---------- */
+(function(){
+  const t = new Date(CONFIG.kickoffISO).getTime();
+  const el = { d:cd('cd-d'), h:cd('cd-h'), m:cd('cd-m'), s:cd('cd-s') };
+  function cd(id){ return document.getElementById(id); }
+  function tick(){
+    const diff = t - Date.now();
+    if (diff <= 0){
+      document.getElementById('countdown').innerHTML =
+        '<div class="cell" style="min-width:200px"><div class="num">WE ARE LIVE</div><div class="lab">See you in the group</div></div>';
+      clearInterval(iv); return;
+    }
+    el.d.textContent = String(Math.floor(diff/864e5)).padStart(2,'0');
+    el.h.textContent = String(Math.floor(diff/36e5)%24).padStart(2,'0');
+    el.m.textContent = String(Math.floor(diff/6e4)%60).padStart(2,'0');
+    el.s.textContent = String(Math.floor(diff/1e3)%60).padStart(2,'0');
+  }
+  tick(); const iv = setInterval(tick,1000);
+})();
+
+/* ---------- facebook links ---------- */
+(function(){
+  const url = CONFIG.facebookGroupURL;
+  ['fb-switch','fb-btn'].forEach(id=>{
+    const a = document.getElementById(id);
+    if (url && !url.startsWith('FB_GROUP')) a.href = url;
+    else a.addEventListener('click', e=>{ e.preventDefault(); alert('Facebook group link coming right up — check back shortly.'); });
+  });
+})();
+
+/* ---------- quick wins grid ---------- */
+(function(){
+  const grid = document.getElementById('day-grid');
+  CONFIG.quickWins.forEach((v,i)=>{
+    const day = document.createElement('article');
+    day.className = 'day';
+    const isPlaceholder = !v.id || v.id.startsWith('WISTIA_ID');
+    const media = isPlaceholder
+      ? `<div class="media"><div class="placeholder"><div class="play" aria-hidden="true"></div><small>Video loading soon</small></div></div>`
+      : `<div class="media"><div class="wistia_responsive_padding"><div class="wistia_responsive_wrapper"><div class="wistia_embed wistia_async_${v.id} seo=false videoFoam=true" style="height:100%;position:relative;width:100%">&nbsp;</div></div></div></div>`;
+    day.innerHTML = `${media}
+      <div class="meta">
+        <div class="n">${String(i+1).padStart(2,'0')}</div>
+        <div><h3>${v.title}</h3><p>${v.blurb}</p></div>
+      </div>`;
+    grid.appendChild(day);
+  });
+  // Load Wistia runtime only if at least one real ID exists
+  if (CONFIG.quickWins.some(v=>v.id && !v.id.startsWith('WISTIA_ID'))){
+    const s = document.createElement('script');
+    s.src = 'https://fast.wistia.com/assets/external/E-v1.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+})();
+
+/* ---------- service dna notify form ---------- */
+(function(){
+  const form = document.getElementById('dna-form');
+  const note = document.getElementById('dna-note');
+  const input = document.getElementById('dna-email');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      note.textContent = 'That email doesn\u2019t look right — give it another shot.';
+      return;
+    }
+    if (CONFIG.dnaNotifyWebhook){
+      try{
+        await fetch(CONFIG.dnaNotifyWebhook, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ email, source:'camp-alpha-hub', field:'service-dna-notify' })
+        });
+      }catch(err){ /* fail soft — still confirm to the user, list is rebuilt from GHL */ }
+    }
+    form.innerHTML = '<div class="note" style="font-size:13px;color:var(--bone)">You\u2019re on the list, sparkie. Your Service DNA login lands in this inbox the day we go live. \u26a1</div>';
+  });
+})();
+</script>
+</body>
+</html>
